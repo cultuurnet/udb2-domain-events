@@ -14,8 +14,8 @@ class EventUpdatedJSONDeserializer extends JSONDeserializer
     {
         $json = parent::fromJSON($json);
 
-        if (!isset($json->event_id)) {
-            throw new MissingValueException('event_id is missing');
+        if (!isset($json->eventId)) {
+            throw new MissingValueException('eventId is missing');
         }
 
         if (!isset($json->time)) {
@@ -41,7 +41,7 @@ class EventUpdatedJSONDeserializer extends JSONDeserializer
         }
 
         return new EventUpdated(
-            new String($json->event_id),
+            new String($json->eventId),
             $time,
             new String($json->author)
         );
