@@ -7,7 +7,7 @@ namespace CultuurNet\UDB2DomainEvents;
 
 use ValueObjects\String\String;
 
-class JSONDeserializerLocator
+class JSONDeserializerLocator implements JSONDeserializerLocatorInterface
 {
     /**
      * @var JSONDeserializerInterface[]
