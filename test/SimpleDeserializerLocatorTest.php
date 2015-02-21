@@ -7,22 +7,22 @@ namespace CultuurNet\UDB2DomainEvents;
 
 use ValueObjects\String\String;
 
-class JSONDeserializerLocatorTest extends \PHPUnit_Framework_TestCase
+class SimpleDeserializerLocatorTest extends \PHPUnit_Framework_TestCase
 {
     /**
-     * @var JSONDeserializerLocator
+     * @var SimpleDeserializerLocator
      */
     protected $deserializerLocator;
 
     public function setUp()
     {
-        $this->deserializerLocator = new JSONDeserializerLocator();
+        $this->deserializerLocator = new SimpleDeserializerLocator();
     }
 
     public function testGivesBackDeserializerThatWasRegistered()
     {
-        $firstDeserializer = $this->getMock(JSONDeserializerInterface::class);
-        $anotherDeserializer = $this->getMock(JSONDeserializerInterface::class);
+        $firstDeserializer = $this->getMock(DeserializerInterface::class);
+        $anotherDeserializer = $this->getMock(DeserializerInterface::class);
 
         $this->deserializerLocator->registerDeserializer(
             new String('application/vnd.cultuurnet.foo'),
@@ -52,7 +52,7 @@ class JSONDeserializerLocatorTest extends \PHPUnit_Framework_TestCase
     public function testThrowsExceptionWhenDeserializerCanNotBeFound()
     {
         $this->setExpectedException(
-            JSONDeserializerNotFoundException::class
+            DeserializerNotFoundException::class
         );
 
         $this->deserializerLocator->getDeserializerForContentType(

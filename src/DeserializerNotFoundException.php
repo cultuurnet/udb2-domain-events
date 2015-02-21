@@ -5,7 +5,7 @@
 
 namespace CultuurNet\UDB2DomainEvents;
 
-class JSONDeserializerNotFoundException extends \RuntimeException
+class DeserializerNotFoundException extends \RuntimeException
 {
 
 }

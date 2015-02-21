@@ -7,7 +7,7 @@ namespace CultuurNet\UDB2DomainEvents;
 
 use ValueObjects\String\String;
 
-interface JSONDeserializerInterface
+interface DeserializerInterface
 {
-    public function fromJSON(String $json);
+    public function deserialize(String $data);
 }

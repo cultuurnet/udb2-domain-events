@@ -27,7 +27,7 @@ class EventUpdatedJSONDeserializerTest extends \PHPUnit_Framework_TestCase
             'eventId is missing'
         );
 
-        $this->deserializer->fromJSON(
+        $this->deserializer->deserialize(
             new String('{}')
         );
     }
@@ -39,7 +39,7 @@ class EventUpdatedJSONDeserializerTest extends \PHPUnit_Framework_TestCase
             'time is missing'
         );
 
-        $this->deserializer->fromJSON(
+        $this->deserializer->deserialize(
             new String(
                 '{
                     "eventId": "foo"
@@ -55,7 +55,7 @@ class EventUpdatedJSONDeserializerTest extends \PHPUnit_Framework_TestCase
             'invalid time provided'
         );
 
-        $this->deserializer->fromJSON(
+        $this->deserializer->deserialize(
             new String(
                 '{
                     "eventId": "foo",
@@ -73,7 +73,7 @@ class EventUpdatedJSONDeserializerTest extends \PHPUnit_Framework_TestCase
             'author is missing'
         );
 
-        $this->deserializer->fromJSON(
+        $this->deserializer->deserialize(
             new String(
                 '{
                     "eventId": "foo",
@@ -85,7 +85,7 @@ class EventUpdatedJSONDeserializerTest extends \PHPUnit_Framework_TestCase
 
     public function testReturnsEventUpdated()
     {
-        $eventUpdated = $this->deserializer->fromJSON(
+        $eventUpdated = $this->deserializer->deserialize(
             new String(
                 '{
                     "eventId": "foo",

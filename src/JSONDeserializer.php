@@ -7,22 +7,22 @@ namespace CultuurNet\UDB2DomainEvents;
 
 use ValueObjects\String\String;
 
-abstract class JSONDeserializer implements JSONDeserializerInterface
+abstract class JSONDeserializer implements DeserializerInterface
 {
     /**
      * Decodes a JSON string into a generic PHP object.
      *
-     * @param String $json
+     * @param String $data
      * @return \stdClass
      */
-    public function fromJSON(String $json)
+    public function deserialize(String $data)
     {
-        $json = json_decode($json->toNative());
+        $data = json_decode($data->toNative());
 
-        if (null === $json) {
+        if (null === $data) {
             throw new NotWellFormedException('Invalid JSON');
         }
 
-        return $json;
+        return $data;
     }
 }

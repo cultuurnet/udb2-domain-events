@@ -10,9 +10,9 @@ use ValueObjects\String\String;
 
 class EventUpdatedJSONDeserializer extends JSONDeserializer
 {
-    public function fromJSON(String $json)
+    public function deserialize(String $json)
     {
-        $json = parent::fromJSON($json);
+        $json = parent::deserialize($json);
 
         if (!isset($json->eventId)) {
             throw new MissingValueException('eventId is missing');
