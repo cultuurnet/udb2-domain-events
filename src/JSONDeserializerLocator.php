@@ -28,7 +28,7 @@ class JSONDeserializerLocator implements JSONDeserializerLocatorInterface
         }
 
         throw new JSONDeserializerNotFoundException(
-            'Unable to find a deserializer for content type ' . $contentType
+            "Unable to find a deserializer for content type '{$contentType->toNative()}'"
         );
     }
 }
