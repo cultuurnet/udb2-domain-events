@@ -1,5 +1,7 @@
 {
   "name": "cultuurnet/udb2-domain-events",
+  "description": "PHP models for domain events in UiTdatabank version 2",
+  "license": "GPL-3.0",
   "authors": [
     {
       "name": "Kristof Coomans",
