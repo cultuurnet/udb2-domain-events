@@ -45,7 +45,7 @@ class EventUpdated
 
     private function setTime(\DateTime $time)
     {
-        $this->time = $time;
+        $this->time = clone $time;
     }
 
     private function setAuthor(String $author)
