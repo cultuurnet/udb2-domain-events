@@ -5,6 +5,8 @@
 
 namespace CultuurNet\UDB2DomainEvents;
 
+use CultuurNet\Deserializer\JSONDeserializer;
+use CultuurNet\Deserializer\MissingValueException;
 use \DateTime;
 use ValueObjects\String\String;
 

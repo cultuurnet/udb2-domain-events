@@ -7,7 +7,9 @@
     }
   ],
   "minimum-stability": "dev",
+  "prefer-stable": true,
   "require": {
+    "cultuurnet/deserializer": "~0.1",
     "nicolopignatelli/valueobjects": "~2.0"
   },
   "require-dev": {
