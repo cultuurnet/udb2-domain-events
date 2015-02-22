@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "0765195d6f8c1fce5a920a33de81dd8b",
+    "hash": "2413778454691a8d4b41e4caced7767f",
     "packages": [
         {
             "name": "cultuurnet/deserializer",
