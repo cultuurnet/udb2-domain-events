@@ -9,7 +9,7 @@ use CultuurNet\Deserializer\JSONDeserializer;
 use CultuurNet\Deserializer\MissingValueException;
 use ValueObjects\String\String;
 
-class EventUpdatedJSONDeserializer extends JSONDeserializer
+class EventCreatedJSONDeserializer extends JSONDeserializer
 {
     public function deserialize(String $json)
     {
@@ -31,7 +31,7 @@ class EventUpdatedJSONDeserializer extends JSONDeserializer
             new String($json->time)
         );
 
-        return new EventUpdated(
+        return new EventCreated(
             new String($json->eventId),
             $time,
             new String($json->author)

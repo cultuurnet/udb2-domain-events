@@ -7,7 +7,7 @@ namespace CultuurNet\UDB2DomainEvents;
 
 use ValueObjects\String\String;
 
-class EventUpdated
+class EventCreated
 {
     use HasEventIdTrait;
     use HasAuthoringMetadataTrait;
