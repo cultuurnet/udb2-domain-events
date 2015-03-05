@@ -13,21 +13,6 @@ class EventUpdated
     use HasAuthoringMetadataTrait;
 
     /**
-     * @var String
-     */
-    protected $eventId;
-
-    /**
-     * @var \DateTime
-     */
-    protected $time;
-
-    /**
-     * @var String
-     */
-    protected $author;
-
-    /**
      * @param String $eventId
      * @param \DateTime $time
      */

@@ -9,6 +9,16 @@ use ValueObjects\String\String;
 
 trait HasAuthoringMetadataTrait
 {
+    /**
+     * @var \DateTime
+     */
+    protected $time;
+
+    /**
+     * @var String
+     */
+    protected $author;
+
     private function setTime(\DateTime $time)
     {
         $this->time = clone $time;

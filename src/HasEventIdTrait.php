@@ -9,6 +9,11 @@ use ValueObjects\String\String;
 
 trait HasEventIdTrait
 {
+    /**
+     * @var String
+     */
+    protected $eventId;
+    
     private function setEventId(String $eventId)
     {
         if ($eventId->isEmpty()) {
