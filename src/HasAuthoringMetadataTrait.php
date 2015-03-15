@@ -21,7 +21,7 @@ trait HasAuthoringMetadataTrait
 
     private function setTime(\DateTimeImmutable $time)
     {
-        $this->time = clone $time;
+        $this->time = $time;
     }
 
     private function setAuthor(String $author)
