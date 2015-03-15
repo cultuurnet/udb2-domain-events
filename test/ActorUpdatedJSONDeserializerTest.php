@@ -112,7 +112,7 @@ class ActorUpdatedJSONDeserializerTest extends \PHPUnit_Framework_TestCase
         );
 
         $this->assertEquals(
-            DateTime::createFromFormat(
+            \DateTimeImmutable::createFromFormat(
                 DateTime::ISO8601,
                 '2015-02-20T20:39:09+0100'
             ),

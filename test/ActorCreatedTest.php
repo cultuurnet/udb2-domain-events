@@ -18,15 +18,15 @@ class ActorCreatedTest extends \PHPUnit_Framework_TestCase
 
         new ActorCreated(
             new String(''),
-            new \DateTime(),
+            new \DateTimeImmutable(),
             new String('')
         );
     }
 
-    private function createActorCreated(\DateTime $time = null)
+    private function createActorCreated(\DateTimeImmutable $time = null)
     {
         if (null === $time) {
-            $time = new \DateTime();
+            $time = new \DateTimeImmutable();
         }
 
         return new ActorCreated(
@@ -58,7 +58,7 @@ class ActorCreatedTest extends \PHPUnit_Framework_TestCase
 
     public function testTime()
     {
-        $time = new \DateTime();
+        $time = new \DateTimeImmutable();
         $expectedTime = clone $time;
 
         $eventCreated = $this->createActorCreated($time);

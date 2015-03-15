@@ -18,15 +18,15 @@ class ActorUpdatedTest extends \PHPUnit_Framework_TestCase
 
         new ActorUpdated(
             new String(''),
-            new \DateTime(),
+            new \DateTimeImmutable(),
             new String('')
         );
     }
 
-    private function createActorUpdated(\DateTime $time = null)
+    private function createActorUpdated(\DateTimeImmutable $time = null)
     {
         if (null === $time) {
-            $time = new \DateTime();
+            $time = new \DateTimeImmutable();
         }
 
         return new ActorUpdated(
@@ -58,7 +58,7 @@ class ActorUpdatedTest extends \PHPUnit_Framework_TestCase
 
     public function testTime()
     {
-        $time = new \DateTime();
+        $time = new \DateTimeImmutable();
         $expectedTime = clone $time;
 
         $actorUpdated = $this->createActorUpdated($time);

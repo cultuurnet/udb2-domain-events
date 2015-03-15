@@ -13,11 +13,11 @@ class ActorCreated
     use HasAuthoringMetadataTrait;
 
     /**
-     * @param String $actorId
-     * @param \DateTime $time
-     * @param String $author
+     * @param String|String $actorId
+     * @param \DateTimeImmutable $time
+     * @param String|String $author
      */
-    public function __construct(String $actorId, \DateTime $time, String $author)
+    public function __construct(String $actorId, \DateTimeImmutable $time, String $author)
     {
         $this->setActorId($actorId);
         $this->setTime($time);
