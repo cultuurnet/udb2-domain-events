@@ -16,7 +16,7 @@ class EventCreated
      * @param String $eventId
      * @param \DateTime $time
      */
-    public function __construct(String $eventId, \DateTime $time, String $author)
+    public function __construct(String $eventId, \DateTimeImmutable $time, String $author)
     {
         $this->setEventId($eventId);
         $this->setTime($time);

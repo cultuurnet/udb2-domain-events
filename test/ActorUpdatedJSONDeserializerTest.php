@@ -9,23 +9,23 @@ use CultuurNet\Deserializer\MissingValueException;
 use DateTime;
 use ValueObjects\String\String;
 
-class EventUpdatedJSONDeserializerTest extends \PHPUnit_Framework_TestCase
+class ActorUpdatedJSONDeserializerTest extends \PHPUnit_Framework_TestCase
 {
     /**
-     * @var EventUpdatedJSONDeserializer
+     * @var ActorUpdatedJSONDeserializer
      */
     protected $deserializer;
 
     public function setUp()
     {
-        $this->deserializer = new EventUpdatedJSONDeserializer();
+        $this->deserializer = new ActorUpdatedJSONDeserializer();
     }
 
-    public function testRequiresEventId()
+    public function testRequiresActorId()
     {
         $this->setExpectedException(
             MissingValueException::class,
-            'eventId is missing'
+            'actorId is missing'
         );
 
         $this->deserializer->deserialize(
@@ -43,7 +43,7 @@ class EventUpdatedJSONDeserializerTest extends \PHPUnit_Framework_TestCase
         $this->deserializer->deserialize(
             new String(
                 '{
-                    "eventId": "foo"
+                    "actorId": "foo"
                 }'
             )
         );
@@ -59,7 +59,7 @@ class EventUpdatedJSONDeserializerTest extends \PHPUnit_Framework_TestCase
         $this->deserializer->deserialize(
             new String(
                 '{
-                    "eventId": "foo",
+                    "actorId": "foo",
                     "author": "me@example.com",
                     "time": "2014-12-12"
                 }'
@@ -77,19 +77,19 @@ class EventUpdatedJSONDeserializerTest extends \PHPUnit_Framework_TestCase
         $this->deserializer->deserialize(
             new String(
                 '{
-                    "eventId": "foo",
+                    "actorId": "foo",
                     "time": "2015-02-20T20:39:09+0100"
                 }'
             )
         );
     }
 
-    public function testReturnsEventUpdated()
+    public function testReturnsActorUpdated()
     {
-        $eventUpdated = $this->deserializer->deserialize(
+        $actorUpdated = $this->deserializer->deserialize(
             new String(
                 '{
-                    "eventId": "foo",
+                    "actorId": "foo",
                     "time": "2015-02-20T20:39:09+0100",
                     "author": "me@example.com"
                 }'
@@ -97,18 +97,18 @@ class EventUpdatedJSONDeserializerTest extends \PHPUnit_Framework_TestCase
         );
 
         $this->assertInstanceOf(
-            EventUpdated::class,
-            $eventUpdated
+            ActorUpdated::class,
+            $actorUpdated
         );
 
         $this->assertEquals(
             new String('foo'),
-            $eventUpdated->getEventId()
+            $actorUpdated->getactorId()
         );
 
         $this->assertEquals(
             new String('me@example.com'),
-            $eventUpdated->getAuthor()
+            $actorUpdated->getAuthor()
         );
 
         $this->assertEquals(
@@ -116,7 +116,7 @@ class EventUpdatedJSONDeserializerTest extends \PHPUnit_Framework_TestCase
                 DateTime::ISO8601,
                 '2015-02-20T20:39:09+0100'
             ),
-            $eventUpdated->getTime()
+            $actorUpdated->getTime()
         );
     }
 }

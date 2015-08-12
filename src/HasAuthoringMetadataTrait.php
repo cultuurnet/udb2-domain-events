@@ -10,7 +10,7 @@ use ValueObjects\String\String;
 trait HasAuthoringMetadataTrait
 {
     /**
-     * @var \DateTime
+     * @var \DateTimeImmutable
      */
     protected $time;
 
@@ -19,9 +19,9 @@ trait HasAuthoringMetadataTrait
      */
     protected $author;
 
-    private function setTime(\DateTime $time)
+    private function setTime(\DateTimeImmutable $time)
     {
-        $this->time = clone $time;
+        $this->time = $time;
     }
 
     private function setAuthor(String $author)

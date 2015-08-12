@@ -7,18 +7,19 @@ namespace CultuurNet\UDB2DomainEvents;
 
 use ValueObjects\String\String;
 
-class EventUpdated
+class ActorUpdated
 {
-    use HasEventIdTrait;
+    use HasActorIdTrait;
     use HasAuthoringMetadataTrait;
 
     /**
-     * @param String $eventId
+     * @param String $actorId
      * @param \DateTime $time
+     * @param String $author
      */
-    public function __construct(String $eventId, \DateTimeImmutable $time, String $author)
+    public function __construct(String $actorId, \DateTimeImmutable $time, String $author)
     {
-        $this->setEventId($eventId);
+        $this->setActorId($actorId);
         $this->setTime($time);
         $this->setAuthor($author);
     }

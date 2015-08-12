@@ -18,15 +18,15 @@ class EventCreatedTest extends \PHPUnit_Framework_TestCase
 
         new EventCreated(
             new String(''),
-            new \DateTime(),
+            new \DateTimeImmutable(),
             new String('')
         );
     }
 
-    private function createEventCreated(\DateTime $time = null)
+    private function createEventCreated(\DateTimeImmutable $time = null)
     {
         if (null === $time) {
-            $time = new \DateTime();
+            $time = new \DateTimeImmutable();
         }
 
         return new EventCreated(
@@ -58,7 +58,7 @@ class EventCreatedTest extends \PHPUnit_Framework_TestCase
 
     public function testTime()
     {
-        $time = new \DateTime();
+        $time = new \DateTimeImmutable();
         $expectedTime = clone $time;
 
         $eventCreated = $this->createEventCreated($time);

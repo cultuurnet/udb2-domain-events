@@ -7,52 +7,52 @@ namespace CultuurNet\UDB2DomainEvents;
 
 use ValueObjects\String\String;
 
-class EventUpdatedTest extends \PHPUnit_Framework_TestCase
+class ActorCreatedTest extends \PHPUnit_Framework_TestCase
 {
-    public function testEventIdCanNotBeEmptyString()
+    public function testActorIdCanNotBeEmptyString()
     {
         $this->setExpectedException(
             \InvalidArgumentException::class,
-            'event id can not be empty'
+            'actor id can not be empty'
         );
 
-        new EventUpdated(
+        new ActorCreated(
             new String(''),
             new \DateTimeImmutable(),
             new String('')
         );
     }
 
-    private function createEventUpdated(\DateTimeImmutable $time = null)
+    private function createActorCreated(\DateTimeImmutable $time = null)
     {
         if (null === $time) {
             $time = new \DateTimeImmutable();
         }
 
-        return new EventUpdated(
+        return new ActorCreated(
             new String('123'),
             $time,
             new String('me@example.com')
         );
     }
 
-    public function testGetEventId()
+    public function testGetActorId()
     {
-        $eventUpdated = $this->createEventUpdated();
+        $eventCreated = $this->createActorCreated();
 
         $this->assertEquals(
             new String('123'),
-            $eventUpdated->getEventId()
+            $eventCreated->getActorId()
         );
     }
 
     public function testGetAuthor()
     {
-        $eventUpdated = $this->createEventUpdated();
+        $eventCreated = $this->createActorCreated();
 
         $this->assertEquals(
             new String('me@example.com'),
-            $eventUpdated->getAuthor()
+            $eventCreated->getAuthor()
         );
     }
 
@@ -61,7 +61,7 @@ class EventUpdatedTest extends \PHPUnit_Framework_TestCase
         $time = new \DateTimeImmutable();
         $expectedTime = clone $time;
 
-        $eventUpdated = $this->createEventUpdated($time);
+        $eventCreated = $this->createActorCreated($time);
 
         // Adjustments to the time after creating the event should
         // not affect the event time.
@@ -69,7 +69,7 @@ class EventUpdatedTest extends \PHPUnit_Framework_TestCase
 
         $this->assertEquals(
             $expectedTime,
-            $eventUpdated->getTime()
+            $eventCreated->getTime()
         );
     }
 }
