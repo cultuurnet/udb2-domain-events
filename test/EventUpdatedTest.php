@@ -19,6 +19,7 @@ class EventUpdatedTest extends \PHPUnit_Framework_TestCase
         new EventUpdated(
             new String(''),
             new \DateTimeImmutable(),
+            new String(''),
             new String('')
         );
     }
@@ -32,7 +33,8 @@ class EventUpdatedTest extends \PHPUnit_Framework_TestCase
         return new EventUpdated(
             new String('123'),
             $time,
-            new String('me@example.com')
+            new String('me@example.com'),
+            new String('http://foo.bar/event/foo')
         );
     }
 
@@ -70,6 +72,16 @@ class EventUpdatedTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(
             $expectedTime,
             $eventUpdated->getTime()
+        );
+    }
+
+    public function testGetUrl()
+    {
+        $eventUpdated = $this->createEventUpdated();
+
+        $this->assertEquals(
+            new String('http://foo.bar/event/foo'),
+            $eventUpdated->getUrl()
         );
     }
 }

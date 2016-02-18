@@ -1,7 +1,4 @@
 <?php
-/**
- * @file
- */
 
 namespace CultuurNet\UDB2DomainEvents;
 
@@ -27,6 +24,10 @@ class EventUpdatedJSONDeserializer extends JSONDeserializer
             throw new MissingValueException('author is missing');
         }
 
+        if (!isset($json->url)) {
+            throw new MissingValueException('url is missing');
+        }
+
         $time = ISO8601DateTimeDeserializer::deserialize(
             new String($json->time)
         );
@@ -34,7 +35,8 @@ class EventUpdatedJSONDeserializer extends JSONDeserializer
         return new EventUpdated(
             new String($json->eventId),
             $time,
-            new String($json->author)
+            new String($json->author),
+            new String($json->url)
         );
     }
 }

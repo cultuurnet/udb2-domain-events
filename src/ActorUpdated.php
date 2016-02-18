@@ -1,7 +1,4 @@
 <?php
-/**
- * @file
- */
 
 namespace CultuurNet\UDB2DomainEvents;
 
@@ -11,16 +8,19 @@ class ActorUpdated
 {
     use HasActorIdTrait;
     use HasAuthoringMetadataTrait;
+    use HasUrlTrait;
 
     /**
      * @param String $actorId
-     * @param \DateTime $time
+     * @param \DateTimeImmutable $time
      * @param String $author
+     * @param String $url
      */
-    public function __construct(String $actorId, \DateTimeImmutable $time, String $author)
+    public function __construct(String $actorId, \DateTimeImmutable $time, String $author, String $url)
     {
         $this->setActorId($actorId);
         $this->setTime($time);
         $this->setAuthor($author);
+        $this->setUrl($url);
     }
 }

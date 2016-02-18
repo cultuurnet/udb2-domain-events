@@ -43,7 +43,8 @@ class ActorCreatedJSONDeserializerTest extends \PHPUnit_Framework_TestCase
         $this->deserializer->deserialize(
             new String(
                 '{
-                    "actorId": "foo"
+                    "actorId": "foo",
+                    "url": "http://foo.bar/event/foo"
                 }'
             )
         );
@@ -61,7 +62,8 @@ class ActorCreatedJSONDeserializerTest extends \PHPUnit_Framework_TestCase
                 '{
                     "actorId": "foo",
                     "author": "me@example.com",
-                    "time": "2014-12-12"
+                    "time": "2014-12-12",
+                    "url": "http://foo.bar/event/foo"
                 }'
             )
         );
@@ -78,6 +80,25 @@ class ActorCreatedJSONDeserializerTest extends \PHPUnit_Framework_TestCase
             new String(
                 '{
                     "actorId": "foo",
+                    "time": "2015-02-20T20:39:09+0100",
+                    "url": "http://foo.bar/event/foo"
+                }'
+            )
+        );
+    }
+
+    public function testRequiresUrl()
+    {
+        $this->setExpectedException(
+            MissingValueException::class,
+            'url is missing'
+        );
+
+        $this->deserializer->deserialize(
+            new String(
+                '{
+                    "actorId": "foo",
+                    "author": "me@example.com",
                     "time": "2015-02-20T20:39:09+0100"
                 }'
             )
@@ -91,7 +112,8 @@ class ActorCreatedJSONDeserializerTest extends \PHPUnit_Framework_TestCase
                 '{
                     "actorId": "foo",
                     "time": "2015-02-20T20:39:09+0100",
-                    "author": "me@example.com"
+                    "author": "me@example.com",
+                    "url": "http://foo.bar/event/foo"
                 }'
             )
         );
@@ -117,6 +139,11 @@ class ActorCreatedJSONDeserializerTest extends \PHPUnit_Framework_TestCase
                 '2015-02-20T20:39:09+0100'
             ),
             $actorCreated->getTime()
+        );
+
+        $this->assertEquals(
+            new String('http://foo.bar/event/foo'),
+            $actorCreated->getUrl()
         );
     }
 }

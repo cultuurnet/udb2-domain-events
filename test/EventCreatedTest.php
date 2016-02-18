@@ -19,6 +19,7 @@ class EventCreatedTest extends \PHPUnit_Framework_TestCase
         new EventCreated(
             new String(''),
             new \DateTimeImmutable(),
+            new String(''),
             new String('')
         );
     }
@@ -32,7 +33,8 @@ class EventCreatedTest extends \PHPUnit_Framework_TestCase
         return new EventCreated(
             new String('123'),
             $time,
-            new String('me@example.com')
+            new String('me@example.com'),
+            new String('http://foo.bar/event/foo')
         );
     }
 
@@ -70,6 +72,16 @@ class EventCreatedTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(
             $expectedTime,
             $eventCreated->getTime()
+        );
+    }
+
+    public function testGetUrl()
+    {
+        $eventCreated = $this->createEventCreated();
+
+        $this->assertEquals(
+            new String('http://foo.bar/event/foo'),
+            $eventCreated->getUrl()
         );
     }
 }

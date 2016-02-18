@@ -19,6 +19,7 @@ class ActorCreatedTest extends \PHPUnit_Framework_TestCase
         new ActorCreated(
             new String(''),
             new \DateTimeImmutable(),
+            new String(''),
             new String('')
         );
     }
@@ -32,7 +33,8 @@ class ActorCreatedTest extends \PHPUnit_Framework_TestCase
         return new ActorCreated(
             new String('123'),
             $time,
-            new String('me@example.com')
+            new String('me@example.com'),
+            new String('http://foo.bar/event/foo')
         );
     }
 
@@ -70,6 +72,16 @@ class ActorCreatedTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(
             $expectedTime,
             $eventCreated->getTime()
+        );
+    }
+
+    public function testUrl()
+    {
+        $eventCreated = $this->createActorCreated();
+
+        $this->assertEquals(
+            new String('http://foo.bar/event/foo'),
+            $eventCreated->getUrl()
         );
     }
 }
