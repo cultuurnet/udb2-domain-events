@@ -9,21 +9,6 @@ use ValueObjects\String\String;
 
 class EventUpdatedTest extends \PHPUnit_Framework_TestCase
 {
-    public function testEventIdCanNotBeEmptyString()
-    {
-        $this->setExpectedException(
-            \InvalidArgumentException::class,
-            'event id can not be empty'
-        );
-
-        new EventUpdated(
-            new String(''),
-            new \DateTimeImmutable(),
-            new String(''),
-            new String('')
-        );
-    }
-
     private function createEventUpdated(\DateTimeImmutable $time = null)
     {
         if (null === $time) {
@@ -31,20 +16,9 @@ class EventUpdatedTest extends \PHPUnit_Framework_TestCase
         }
 
         return new EventUpdated(
-            new String('123'),
             $time,
             new String('me@example.com'),
             new String('http://foo.bar/event/foo')
-        );
-    }
-
-    public function testGetEventId()
-    {
-        $eventUpdated = $this->createEventUpdated();
-
-        $this->assertEquals(
-            new String('123'),
-            $eventUpdated->getEventId()
         );
     }
 

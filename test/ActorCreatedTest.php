@@ -9,21 +9,6 @@ use ValueObjects\String\String;
 
 class ActorCreatedTest extends \PHPUnit_Framework_TestCase
 {
-    public function testActorIdCanNotBeEmptyString()
-    {
-        $this->setExpectedException(
-            \InvalidArgumentException::class,
-            'actor id can not be empty'
-        );
-
-        new ActorCreated(
-            new String(''),
-            new \DateTimeImmutable(),
-            new String(''),
-            new String('')
-        );
-    }
-
     private function createActorCreated(\DateTimeImmutable $time = null)
     {
         if (null === $time) {
@@ -31,20 +16,9 @@ class ActorCreatedTest extends \PHPUnit_Framework_TestCase
         }
 
         return new ActorCreated(
-            new String('123'),
             $time,
             new String('me@example.com'),
             new String('http://foo.bar/event/foo')
-        );
-    }
-
-    public function testGetActorId()
-    {
-        $eventCreated = $this->createActorCreated();
-
-        $this->assertEquals(
-            new String('123'),
-            $eventCreated->getActorId()
         );
     }
 
