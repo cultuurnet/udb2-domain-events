@@ -9,6 +9,20 @@ use ValueObjects\String\String;
 
 class ActorUpdatedTest extends \PHPUnit_Framework_TestCase
 {
+    public function testUrlCanNotBeEmptyString()
+    {
+        $this->setExpectedException(
+            \InvalidArgumentException::class,
+            'url can not be empty'
+        );
+
+        new ActorUpdated(
+            new \DateTimeImmutable(),
+            new String(''),
+            new String('')
+        );
+    }
+
     private function createActorUpdated(\DateTimeImmutable $time = null)
     {
         if (null === $time) {

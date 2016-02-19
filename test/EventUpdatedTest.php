@@ -9,6 +9,20 @@ use ValueObjects\String\String;
 
 class EventUpdatedTest extends \PHPUnit_Framework_TestCase
 {
+    public function testUrlCanNotBeEmptyString()
+    {
+        $this->setExpectedException(
+            \InvalidArgumentException::class,
+            'url can not be empty'
+        );
+
+        new EventUpdated(
+            new \DateTimeImmutable(),
+            new String(''),
+            new String('')
+        );
+    }
+
     private function createEventUpdated(\DateTimeImmutable $time = null)
     {
         if (null === $time) {
