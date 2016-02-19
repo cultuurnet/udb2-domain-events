@@ -17,6 +17,22 @@ class EventUpdatedTest extends \PHPUnit_Framework_TestCase
         );
 
         new EventUpdated(
+            new String('foo'),
+            new \DateTimeImmutable(),
+            new String(''),
+            new String('')
+        );
+    }
+
+    public function testEventIdCanNotBeEmptyString()
+    {
+        $this->setExpectedException(
+            \InvalidArgumentException::class,
+            'event id can not be empty'
+        );
+
+        new EventUpdated(
+            new String(''),
             new \DateTimeImmutable(),
             new String(''),
             new String('')
@@ -30,9 +46,20 @@ class EventUpdatedTest extends \PHPUnit_Framework_TestCase
         }
 
         return new EventUpdated(
+            new String('123'),
             $time,
             new String('me@example.com'),
             new String('http://foo.bar/event/foo')
+        );
+    }
+
+    public function testGetEventId()
+    {
+        $eventUpdated = $this->createEventUpdated();
+
+        $this->assertEquals(
+            new String('123'),
+            $eventUpdated->getEventId()
         );
     }
 

@@ -17,6 +17,22 @@ class ActorUpdatedTest extends \PHPUnit_Framework_TestCase
         );
 
         new ActorUpdated(
+            new String('foo'),
+            new \DateTimeImmutable(),
+            new String(''),
+            new String('')
+        );
+    }
+
+    public function testActorIdCanNotBeEmptyString()
+    {
+        $this->setExpectedException(
+            \InvalidArgumentException::class,
+            'actor id can not be empty'
+        );
+
+        new ActorUpdated(
+            new String(''),
             new \DateTimeImmutable(),
             new String(''),
             new String('')
@@ -30,9 +46,20 @@ class ActorUpdatedTest extends \PHPUnit_Framework_TestCase
         }
 
         return new ActorUpdated(
+            new String('123'),
             $time,
             new String('me@example.com'),
             new String('http://foo.bar/event/foo')
+        );
+    }
+
+    public function testGetActorId()
+    {
+        $actorUpdated = $this->createActorUpdated();
+
+        $this->assertEquals(
+            new String('123'),
+            $actorUpdated->getActorId()
         );
     }
 

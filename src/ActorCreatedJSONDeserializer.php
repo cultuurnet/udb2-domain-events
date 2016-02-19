@@ -16,6 +16,10 @@ class ActorCreatedJSONDeserializer extends JSONDeserializer
     {
         $json = parent::deserialize($json);
 
+        if (!isset($json->actorId)) {
+            throw new MissingValueException('actorId is missing');
+        }
+
         if (!isset($json->time)) {
             throw new MissingValueException('time is missing');
         }
@@ -33,6 +37,7 @@ class ActorCreatedJSONDeserializer extends JSONDeserializer
         );
 
         return new ActorCreated(
+            new String($json->actorId),
             $time,
             new String($json->author),
             new String($json->url)
