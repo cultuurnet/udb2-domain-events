@@ -1,13 +1,10 @@
 <?php
-/**
- * @file
- */
 
 namespace CultuurNet\UDB2DomainEvents;
 
 use DateTime;
 use DateTimeImmutable;
-use ValueObjects\String\String;
+use ValueObjects\String\String as StringLiteral;
 
 class ISO8601DateTimeDeserializer
 {
@@ -16,7 +13,7 @@ class ISO8601DateTimeDeserializer
      *
      * @return \DateTimeImmutable
      */
-    public static function deserialize(String $timeString)
+    public static function deserialize(StringLiteral $timeString)
     {
         $time = DateTimeImmutable::createFromFormat(
             DateTime::ISO8601,

@@ -2,7 +2,8 @@
 
 namespace CultuurNet\UDB2DomainEvents;
 
-use ValueObjects\String\String;
+use ValueObjects\String\String as StringLiteral;
+use ValueObjects\Web\Url;
 
 class EventCreated
 {
@@ -11,13 +12,17 @@ class EventCreated
     use HasUrlTrait;
 
     /**
-     * @param String $eventId
+     * @param StringLiteral $eventId
      * @param \DateTimeImmutable $time
-     * @param String $author
-     * @param String $url
+     * @param StringLiteral $author
+     * @param Url $url
      */
-    public function __construct(String $eventId, \DateTimeImmutable $time, String $author, String $url)
-    {
+    public function __construct(
+        StringLiteral $eventId,
+        \DateTimeImmutable $time,
+        StringLiteral $author,
+        Url $url
+    ) {
         $this->setEventId($eventId);
         $this->setTime($time);
         $this->setAuthor($author);

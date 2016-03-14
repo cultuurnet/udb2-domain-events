@@ -1,11 +1,8 @@
 <?php
-/**
- * @file
- */
 
 namespace CultuurNet\UDB2DomainEvents;
 
-use ValueObjects\String\String;
+use ValueObjects\String\String as StringLiteral;
 
 trait HasActorIdTrait
 {
@@ -16,9 +13,9 @@ trait HasActorIdTrait
     private $actorId;
 
     /**
-     * @param String $actorId
+     * @param StringLiteral $actorId
      */
-    private function setActorId(String $actorId)
+    private function setActorId(StringLiteral $actorId)
     {
         if ($actorId->isEmpty()) {
             throw new \InvalidArgumentException('actor id can not be empty');

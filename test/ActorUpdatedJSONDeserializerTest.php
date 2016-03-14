@@ -8,6 +8,7 @@ namespace CultuurNet\UDB2DomainEvents;
 use CultuurNet\Deserializer\MissingValueException;
 use DateTime;
 use ValueObjects\String\String;
+use ValueObjects\Web\Url;
 
 class ActorUpdatedJSONDeserializerTest extends \PHPUnit_Framework_TestCase
 {
@@ -142,7 +143,7 @@ class ActorUpdatedJSONDeserializerTest extends \PHPUnit_Framework_TestCase
         );
 
         $this->assertEquals(
-            new String('http://foo.bar/event/foo'),
+            Url::fromNative('http://foo.bar/event/foo'),
             $actorUpdated->getUrl()
         );
     }

@@ -6,24 +6,10 @@
 namespace CultuurNet\UDB2DomainEvents;
 
 use ValueObjects\String\String;
+use ValueObjects\Web\Url;
 
 class ActorCreatedTest extends \PHPUnit_Framework_TestCase
 {
-    public function testUrlCanNotBeEmptyString()
-    {
-        $this->setExpectedException(
-            \InvalidArgumentException::class,
-            'url can not be empty'
-        );
-
-        new ActorCreated(
-            new String('foo'),
-            new \DateTimeImmutable(),
-            new String(''),
-            new String('')
-        );
-    }
-
     public function testActorIdCanNotBeEmptyString()
     {
         $this->setExpectedException(
@@ -35,7 +21,7 @@ class ActorCreatedTest extends \PHPUnit_Framework_TestCase
             new String(''),
             new \DateTimeImmutable(),
             new String(''),
-            new String('')
+            Url::fromNative('http://foo.bar/event/foo')
         );
     }
 
@@ -49,7 +35,7 @@ class ActorCreatedTest extends \PHPUnit_Framework_TestCase
             new String('123'),
             $time,
             new String('me@example.com'),
-            new String('http://foo.bar/event/foo')
+            Url::fromNative('http://foo.bar/event/foo')
         );
     }
 
@@ -95,7 +81,7 @@ class ActorCreatedTest extends \PHPUnit_Framework_TestCase
         $eventCreated = $this->createActorCreated();
 
         $this->assertEquals(
-            new String('http://foo.bar/event/foo'),
+            Url::fromNative('http://foo.bar/event/foo'),
             $eventCreated->getUrl()
         );
     }

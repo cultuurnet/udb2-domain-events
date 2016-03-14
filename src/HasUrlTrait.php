@@ -2,25 +2,22 @@
 
 namespace CultuurNet\UDB2DomainEvents;
 
-use ValueObjects\String\String;
+use ValueObjects\Web\Url;
 
 trait HasUrlTrait
 {
     /**
-     * @var String
+     * @var Url
      */
     protected $url;
 
-    private function setUrl(String $url)
+    private function setUrl(Url $url)
     {
-        if ($url->isEmpty()) {
-            throw new \InvalidArgumentException('url can not be empty');
-        }
         $this->url = $url;
     }
 
     /**
-     * @return String
+     * @return Url
      */
     public function getUrl()
     {

@@ -4,15 +4,16 @@ namespace CultuurNet\UDB2DomainEvents;
 
 use CultuurNet\Deserializer\JSONDeserializer;
 use CultuurNet\Deserializer\MissingValueException;
-use ValueObjects\String\String;
+use ValueObjects\String\String as StringLiteral;
+use ValueObjects\Web\Url;
 
 class ActorCreatedJSONDeserializer extends JSONDeserializer
 {
     /**
-     * @param String $json
+     * @param StringLiteral $json
      * @return ActorCreated
      */
-    public function deserialize(String $json)
+    public function deserialize(StringLiteral $json)
     {
         $json = parent::deserialize($json);
 
@@ -33,14 +34,14 @@ class ActorCreatedJSONDeserializer extends JSONDeserializer
         }
 
         $time = ISO8601DateTimeDeserializer::deserialize(
-            new String($json->time)
+            new StringLiteral($json->time)
         );
 
         return new ActorCreated(
-            new String($json->actorId),
+            new StringLiteral($json->actorId),
             $time,
-            new String($json->author),
-            new String($json->url)
+            new StringLiteral($json->author),
+            Url::fromNative($json->url)
         );
     }
 }
