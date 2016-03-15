@@ -12,7 +12,7 @@ trait HasAuthoringMetadataTrait
     protected $time;
 
     /**
-     * @var String
+     * @var StringLiteral
      */
     protected $author;
 

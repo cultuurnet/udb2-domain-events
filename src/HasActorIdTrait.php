@@ -8,7 +8,7 @@ trait HasActorIdTrait
 {
 
     /**
-     * @var String
+     * @var StringLiteral
      */
     private $actorId;
 
@@ -24,7 +24,7 @@ trait HasActorIdTrait
     }
 
     /**
-     * @return String
+     * @return StringLiteral
      */
     public function getActorId()
     {

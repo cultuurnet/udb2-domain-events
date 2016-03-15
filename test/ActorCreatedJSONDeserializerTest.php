@@ -1,13 +1,10 @@
 <?php
-/**
- * @file
- */
 
 namespace CultuurNet\UDB2DomainEvents;
 
 use CultuurNet\Deserializer\MissingValueException;
 use DateTime;
-use ValueObjects\String\String;
+use ValueObjects\String\String as StringLiteral;
 use ValueObjects\Web\Url;
 
 class ActorCreatedJSONDeserializerTest extends \PHPUnit_Framework_TestCase
@@ -30,7 +27,7 @@ class ActorCreatedJSONDeserializerTest extends \PHPUnit_Framework_TestCase
         );
 
         $this->deserializer->deserialize(
-            new String('{}')
+            new StringLiteral('{}')
         );
     }
 
@@ -42,7 +39,7 @@ class ActorCreatedJSONDeserializerTest extends \PHPUnit_Framework_TestCase
         );
 
         $this->deserializer->deserialize(
-            new String(
+            new StringLiteral(
                 '{
                     "actorId": "foo",
                     "url": "http://foo.bar/event/foo"
@@ -59,7 +56,7 @@ class ActorCreatedJSONDeserializerTest extends \PHPUnit_Framework_TestCase
         );
 
         $this->deserializer->deserialize(
-            new String(
+            new StringLiteral(
                 '{
                     "actorId": "foo",
                     "author": "me@example.com",
@@ -78,7 +75,7 @@ class ActorCreatedJSONDeserializerTest extends \PHPUnit_Framework_TestCase
         );
 
         $this->deserializer->deserialize(
-            new String(
+            new StringLiteral(
                 '{
                     "actorId": "foo",
                     "time": "2015-02-20T20:39:09+0100",
@@ -96,7 +93,7 @@ class ActorCreatedJSONDeserializerTest extends \PHPUnit_Framework_TestCase
         );
 
         $this->deserializer->deserialize(
-            new String(
+            new StringLiteral(
                 '{
                     "actorId": "foo",
                     "author": "me@example.com",
@@ -109,7 +106,7 @@ class ActorCreatedJSONDeserializerTest extends \PHPUnit_Framework_TestCase
     public function testReturnsActorCreated()
     {
         $actorCreated = $this->deserializer->deserialize(
-            new String(
+            new StringLiteral(
                 '{
                     "actorId": "foo",
                     "time": "2015-02-20T20:39:09+0100",
@@ -125,12 +122,12 @@ class ActorCreatedJSONDeserializerTest extends \PHPUnit_Framework_TestCase
         );
 
         $this->assertEquals(
-            new String('foo'),
+            new StringLiteral('foo'),
             $actorCreated->getActorId()
         );
 
         $this->assertEquals(
-            new String('me@example.com'),
+            new StringLiteral('me@example.com'),
             $actorCreated->getAuthor()
         );
 

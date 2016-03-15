@@ -7,7 +7,7 @@ namespace CultuurNet\UDB2DomainEvents;
 
 use CultuurNet\Deserializer\MissingValueException;
 use DateTime;
-use ValueObjects\String\String;
+use ValueObjects\String\String as StringLiteral;
 use ValueObjects\Web\Url;
 
 class EventUpdatedJSONDeserializerTest extends \PHPUnit_Framework_TestCase
@@ -30,7 +30,7 @@ class EventUpdatedJSONDeserializerTest extends \PHPUnit_Framework_TestCase
         );
 
         $this->deserializer->deserialize(
-            new String('{}')
+            new StringLiteral('{}')
         );
     }
 
@@ -42,7 +42,7 @@ class EventUpdatedJSONDeserializerTest extends \PHPUnit_Framework_TestCase
         );
 
         $this->deserializer->deserialize(
-            new String(
+            new StringLiteral(
                 '{
                     "eventId": "foo",
                     "url": "http://foo.bar/event/foo"
@@ -59,7 +59,7 @@ class EventUpdatedJSONDeserializerTest extends \PHPUnit_Framework_TestCase
         );
 
         $this->deserializer->deserialize(
-            new String(
+            new StringLiteral(
                 '{
                     "eventId": "foo",
                     "author": "me@example.com",
@@ -78,7 +78,7 @@ class EventUpdatedJSONDeserializerTest extends \PHPUnit_Framework_TestCase
         );
 
         $this->deserializer->deserialize(
-            new String(
+            new StringLiteral(
                 '{
                     "eventId": "foo",
                     "time": "2015-02-20T20:39:09+0100",
@@ -96,7 +96,7 @@ class EventUpdatedJSONDeserializerTest extends \PHPUnit_Framework_TestCase
         );
 
         $this->deserializer->deserialize(
-            new String(
+            new StringLiteral(
                 '{
                     "eventId": "foo",
                     "author": "me@example.com",
@@ -109,7 +109,7 @@ class EventUpdatedJSONDeserializerTest extends \PHPUnit_Framework_TestCase
     public function testReturnsEventUpdated()
     {
         $eventUpdated = $this->deserializer->deserialize(
-            new String(
+            new StringLiteral(
                 '{
                     "eventId": "foo",
                     "time": "2015-02-20T20:39:09+0100",
@@ -125,12 +125,12 @@ class EventUpdatedJSONDeserializerTest extends \PHPUnit_Framework_TestCase
         );
 
         $this->assertEquals(
-            new String('foo'),
+            new StringLiteral('foo'),
             $eventUpdated->getEventId()
         );
 
         $this->assertEquals(
-            new String('me@example.com'),
+            new StringLiteral('me@example.com'),
             $eventUpdated->getAuthor()
         );
 

@@ -7,7 +7,7 @@ use ValueObjects\String\String as StringLiteral;
 trait HasEventIdTrait
 {
     /**
-     * @var String
+     * @var StringLiteral
      */
     protected $eventId;
     

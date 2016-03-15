@@ -5,7 +5,7 @@
 
 namespace CultuurNet\UDB2DomainEvents;
 
-use ValueObjects\String\String;
+use ValueObjects\String\String as StringLiteral;
 use ValueObjects\Web\Url;
 
 class EventCreatedTest extends \PHPUnit_Framework_TestCase
@@ -18,9 +18,9 @@ class EventCreatedTest extends \PHPUnit_Framework_TestCase
         );
 
         new EventCreated(
-            new String(''),
+            new StringLiteral(''),
             new \DateTimeImmutable(),
-            new String(''),
+            new StringLiteral(''),
             Url::fromNative('http://foo.bar/event/foo')
         );
     }
@@ -32,9 +32,9 @@ class EventCreatedTest extends \PHPUnit_Framework_TestCase
         }
 
         return new EventCreated(
-            new String('123'),
+            new StringLiteral('123'),
             $time,
-            new String('me@example.com'),
+            new StringLiteral('me@example.com'),
             Url::fromNative('http://foo.bar/event/foo')
         );
     }
@@ -44,7 +44,7 @@ class EventCreatedTest extends \PHPUnit_Framework_TestCase
         $eventCreated = $this->createEventCreated();
 
         $this->assertEquals(
-            new String('123'),
+            new StringLiteral('123'),
             $eventCreated->getEventId()
         );
     }
@@ -54,7 +54,7 @@ class EventCreatedTest extends \PHPUnit_Framework_TestCase
         $eventCreated = $this->createEventCreated();
 
         $this->assertEquals(
-            new String('me@example.com'),
+            new StringLiteral('me@example.com'),
             $eventCreated->getAuthor()
         );
     }
