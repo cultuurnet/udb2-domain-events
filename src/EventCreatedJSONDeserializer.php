@@ -1,17 +1,15 @@
 <?php
-/**
- * @file
- */
 
 namespace CultuurNet\UDB2DomainEvents;
 
 use CultuurNet\Deserializer\JSONDeserializer;
 use CultuurNet\Deserializer\MissingValueException;
-use ValueObjects\String\String;
+use ValueObjects\String\String as StringLiteral;
+use ValueObjects\Web\Url;
 
 class EventCreatedJSONDeserializer extends JSONDeserializer
 {
-    public function deserialize(String $json)
+    public function deserialize(StringLiteral $json)
     {
         $json = parent::deserialize($json);
 
@@ -27,14 +25,19 @@ class EventCreatedJSONDeserializer extends JSONDeserializer
             throw new MissingValueException('author is missing');
         }
 
+        if (!isset($json->url)) {
+            throw new MissingValueException('url is missing');
+        }
+
         $time = ISO8601DateTimeDeserializer::deserialize(
-            new String($json->time)
+            new StringLiteral($json->time)
         );
 
         return new EventCreated(
-            new String($json->eventId),
+            new StringLiteral($json->eventId),
             $time,
-            new String($json->author)
+            new StringLiteral($json->author),
+            Url::fromNative($json->url)
         );
     }
 }

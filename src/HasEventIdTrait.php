@@ -1,20 +1,17 @@
 <?php
-/**
- * @file
- */
 
 namespace CultuurNet\UDB2DomainEvents;
 
-use ValueObjects\String\String;
+use ValueObjects\String\String as StringLiteral;
 
 trait HasEventIdTrait
 {
     /**
-     * @var String
+     * @var StringLiteral
      */
     protected $eventId;
     
-    private function setEventId(String $eventId)
+    private function setEventId(StringLiteral $eventId)
     {
         if ($eventId->isEmpty()) {
             throw new \InvalidArgumentException('event id can not be empty');
@@ -23,7 +20,7 @@ trait HasEventIdTrait
     }
 
     /**
-     * @return String
+     * @return StringLiteral
      */
     public function getEventId()
     {

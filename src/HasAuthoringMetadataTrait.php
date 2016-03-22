@@ -1,11 +1,8 @@
 <?php
-/**
- * @file
- */
 
 namespace CultuurNet\UDB2DomainEvents;
 
-use ValueObjects\String\String;
+use ValueObjects\String\String as StringLiteral;
 
 trait HasAuthoringMetadataTrait
 {
@@ -15,7 +12,7 @@ trait HasAuthoringMetadataTrait
     protected $time;
 
     /**
-     * @var String
+     * @var StringLiteral
      */
     protected $author;
 
@@ -24,13 +21,13 @@ trait HasAuthoringMetadataTrait
         $this->time = $time;
     }
 
-    private function setAuthor(String $author)
+    private function setAuthor(StringLiteral $author)
     {
         $this->author = $author;
     }
 
     /**
-     * @return String
+     * @return StringLiteral
      */
     public function getAuthor()
     {

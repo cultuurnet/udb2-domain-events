@@ -21,15 +21,15 @@
         </phplint>
     </target>
 
+    <!--
+        The PHPUnit task of Phing does not support white-lists for code
+        coverage. Therefore we use the exec task instead.
+    -->
     <target name="unit-tests">
-        <phpunit bootstrap="test/bootstrap.php" printsummary="true" haltonerror="true" haltonfailure="true">
-            <formatter type="plain" usefile="false"/>
-            <batchtest>
-                <fileset dir="test">
-                    <include name="**/*Test.php"/>
-                </fileset>
-            </batchtest>
-        </phpunit>
+        <exec
+                command="./vendor/bin/phpunit"
+                checkreturn="true"
+                passthru="true"/>
     </target>
 
     <target name="test">

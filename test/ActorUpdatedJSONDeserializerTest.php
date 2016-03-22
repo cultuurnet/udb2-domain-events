@@ -1,13 +1,11 @@
 <?php
-/**
- * @file
- */
 
 namespace CultuurNet\UDB2DomainEvents;
 
 use CultuurNet\Deserializer\MissingValueException;
 use DateTime;
-use ValueObjects\String\String;
+use ValueObjects\String\String as StringLiteral;
+use ValueObjects\Web\Url;
 
 class ActorUpdatedJSONDeserializerTest extends \PHPUnit_Framework_TestCase
 {
@@ -29,7 +27,7 @@ class ActorUpdatedJSONDeserializerTest extends \PHPUnit_Framework_TestCase
         );
 
         $this->deserializer->deserialize(
-            new String('{}')
+            new StringLiteral('{}')
         );
     }
 
@@ -41,9 +39,10 @@ class ActorUpdatedJSONDeserializerTest extends \PHPUnit_Framework_TestCase
         );
 
         $this->deserializer->deserialize(
-            new String(
+            new StringLiteral(
                 '{
-                    "actorId": "foo"
+                    "actorId": "foo",
+                    "url": "http://foo.bar/event/foo"
                 }'
             )
         );
@@ -57,11 +56,12 @@ class ActorUpdatedJSONDeserializerTest extends \PHPUnit_Framework_TestCase
         );
 
         $this->deserializer->deserialize(
-            new String(
+            new StringLiteral(
                 '{
                     "actorId": "foo",
                     "author": "me@example.com",
-                    "time": "2014-12-12"
+                    "time": "2014-12-12",
+                    "url": "http://foo.bar/event/foo"
                 }'
             )
         );
@@ -75,9 +75,28 @@ class ActorUpdatedJSONDeserializerTest extends \PHPUnit_Framework_TestCase
         );
 
         $this->deserializer->deserialize(
-            new String(
+            new StringLiteral(
                 '{
                     "actorId": "foo",
+                    "time": "2015-02-20T20:39:09+0100",
+                    "url": "http://foo.bar/event/foo"
+                }'
+            )
+        );
+    }
+
+    public function testRequiresUrl()
+    {
+        $this->setExpectedException(
+            MissingValueException::class,
+            'url is missing'
+        );
+
+        $this->deserializer->deserialize(
+            new StringLiteral(
+                '{
+                    "actorId": "foo",
+                    "author": "me@example.com",
                     "time": "2015-02-20T20:39:09+0100"
                 }'
             )
@@ -87,11 +106,12 @@ class ActorUpdatedJSONDeserializerTest extends \PHPUnit_Framework_TestCase
     public function testReturnsActorUpdated()
     {
         $actorUpdated = $this->deserializer->deserialize(
-            new String(
+            new StringLiteral(
                 '{
                     "actorId": "foo",
                     "time": "2015-02-20T20:39:09+0100",
-                    "author": "me@example.com"
+                    "author": "me@example.com",
+                    "url": "http://foo.bar/event/foo"
                 }'
             )
         );
@@ -102,12 +122,12 @@ class ActorUpdatedJSONDeserializerTest extends \PHPUnit_Framework_TestCase
         );
 
         $this->assertEquals(
-            new String('foo'),
+            new StringLiteral('foo'),
             $actorUpdated->getactorId()
         );
 
         $this->assertEquals(
-            new String('me@example.com'),
+            new StringLiteral('me@example.com'),
             $actorUpdated->getAuthor()
         );
 
@@ -117,6 +137,11 @@ class ActorUpdatedJSONDeserializerTest extends \PHPUnit_Framework_TestCase
                 '2015-02-20T20:39:09+0100'
             ),
             $actorUpdated->getTime()
+        );
+
+        $this->assertEquals(
+            Url::fromNative('http://foo.bar/event/foo'),
+            $actorUpdated->getUrl()
         );
     }
 }

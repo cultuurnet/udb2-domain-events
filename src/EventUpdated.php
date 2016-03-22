@@ -1,25 +1,31 @@
 <?php
-/**
- * @file
- */
 
 namespace CultuurNet\UDB2DomainEvents;
 
-use ValueObjects\String\String;
+use ValueObjects\String\String as StringLiteral;
+use ValueObjects\Web\Url;
 
 class EventUpdated
 {
     use HasEventIdTrait;
     use HasAuthoringMetadataTrait;
+    use HasUrlTrait;
 
     /**
-     * @param String $eventId
-     * @param \DateTime $time
+     * @param StringLiteral $eventId
+     * @param \DateTimeImmutable $time
+     * @param StringLiteral $author
+     * @param Url $url
      */
-    public function __construct(String $eventId, \DateTimeImmutable $time, String $author)
-    {
+    public function __construct(
+        StringLiteral $eventId,
+        \DateTimeImmutable $time,
+        StringLiteral $author,
+        Url $url
+    ) {
         $this->setEventId($eventId);
         $this->setTime($time);
         $this->setAuthor($author);
+        $this->setUrl($url);
     }
 }
