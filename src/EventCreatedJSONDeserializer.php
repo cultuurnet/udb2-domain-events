@@ -5,7 +5,6 @@ namespace CultuurNet\UDB2DomainEvents;
 use CultuurNet\Deserializer\JSONDeserializer;
 use CultuurNet\Deserializer\MissingValueException;
 use ValueObjects\String\String as StringLiteral;
-use ValueObjects\Web\Url;
 
 class EventCreatedJSONDeserializer extends JSONDeserializer
 {
@@ -29,15 +28,6 @@ class EventCreatedJSONDeserializer extends JSONDeserializer
             throw new MissingValueException('url is missing');
         }
 
-        $time = ISO8601DateTimeDeserializer::deserialize(
-            new StringLiteral($json->time)
-        );
-
-        return new EventCreated(
-            new StringLiteral($json->eventId),
-            $time,
-            new StringLiteral($json->author),
-            Url::fromNative($json->url)
-        );
+        return EventCreated::deserialize((array) $json);
     }
 }
