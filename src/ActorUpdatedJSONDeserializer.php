@@ -8,6 +8,10 @@ use ValueObjects\String\String as StringLiteral;
 
 class ActorUpdatedJSONDeserializer extends JSONDeserializer
 {
+    /**
+     * @param StringLiteral $json
+     * @return ActorUpdated
+     */
     public function deserialize(StringLiteral $json)
     {
         $json = parent::deserialize($json);

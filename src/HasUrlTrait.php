@@ -23,4 +23,14 @@ trait HasUrlTrait
     {
         return $this->url;
     }
+
+    /**
+     * @return array
+     */
+    public function serialize()
+    {
+        return [
+            'url' => (string) $this->getUrl(),
+        ];
+    }
 }

@@ -33,26 +33,13 @@ trait HasActorIdTrait
         return $this->actorId;
     }
 
-
+    /**
+     * @return array
+     */
     public function serialize()
     {
         return [
-            'eventId' => (string) $this->getActorId(),
-            'time' => $this->getTime()->format(DateTime::ISO8601),
-            'author' => (string) $this->getAuthor(),
-            'url' => (string) $this->getUrl(),
+            'actorId' => (string) $this->getActorId(),
         ];
-    }
-
-    public static function deserialize(array $data)
-    {
-        return new static(
-            new StringLiteral($data['actorId']),
-            ISO8601DateTimeDeserializer::deserialize(
-                new StringLiteral($data['time'])
-            ),
-            new StringLiteral($data['author']),
-            Url::fromNative($data['url'])
-        );
     }
 }

@@ -91,7 +91,7 @@ class ActorUpdatedTest extends \PHPUnit_Framework_TestCase
         $time = new \DateTimeImmutable("2016-04-15T16:06:11+0200");
         $eventCreated = $this->createActorUpdated($time);
         $expectedData = [
-            "eventId" => "123",
+            "actorId" => "123",
             "time" => "2016-04-15T16:06:11+0200",
             "author" => "me@example.com",
             "url" => "http://foo.bar/event/foo",
