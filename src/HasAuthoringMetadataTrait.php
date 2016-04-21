@@ -41,4 +41,15 @@ trait HasAuthoringMetadataTrait
     {
         return $this->time;
     }
+
+    /**
+     * @return array
+     */
+    public function serialize()
+    {
+        return [
+            'time' => $this->getTime()->format(\DateTime::ISO8601),
+            'author' => (string) $this->getAuthor(),
+        ];
+    }
 }

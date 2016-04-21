@@ -85,4 +85,21 @@ class EventCreatedTest extends \PHPUnit_Framework_TestCase
             $eventCreated->getUrl()
         );
     }
+
+    public function testSerialization()
+    {
+        $time = new \DateTimeImmutable("2016-04-15T16:06:11+0200");
+        $eventCreated = $this->createEventCreated($time);
+        $expectedData = [
+            "eventId" => "123",
+            "time" => "2016-04-15T16:06:11+0200",
+            "author" => "me@example.com",
+            "url" => "http://foo.bar/event/foo",
+        ];
+
+        $this->assertEquals(
+            $expectedData,
+            $eventCreated->serialize()
+        );
+    }
 }

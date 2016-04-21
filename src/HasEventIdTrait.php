@@ -2,7 +2,9 @@
 
 namespace CultuurNet\UDB2DomainEvents;
 
+use DateTime;
 use ValueObjects\String\String as StringLiteral;
+use ValueObjects\Web\Url;
 
 trait HasEventIdTrait
 {
@@ -10,7 +12,7 @@ trait HasEventIdTrait
      * @var StringLiteral
      */
     protected $eventId;
-    
+
     private function setEventId(StringLiteral $eventId)
     {
         if ($eventId->isEmpty()) {
@@ -25,5 +27,15 @@ trait HasEventIdTrait
     public function getEventId()
     {
         return $this->eventId;
+    }
+
+    /**
+     * @return array
+     */
+    public function serialize()
+    {
+        return [
+            'eventId' => (string) $this->getEventId(),
+        ];
     }
 }

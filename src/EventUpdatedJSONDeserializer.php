@@ -29,15 +29,6 @@ class EventUpdatedJSONDeserializer extends JSONDeserializer
             throw new MissingValueException('url is missing');
         }
 
-        $time = ISO8601DateTimeDeserializer::deserialize(
-            new StringLiteral($json->time)
-        );
-
-        return new EventUpdated(
-            new StringLiteral($json->eventId),
-            $time,
-            new StringLiteral($json->author),
-            Url::fromNative($json->url)
-        );
+        return EventUpdated::deserialize((array) $json);
     }
 }

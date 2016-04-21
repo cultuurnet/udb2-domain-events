@@ -2,7 +2,9 @@
 
 namespace CultuurNet\UDB2DomainEvents;
 
+use DateTime;
 use ValueObjects\String\String as StringLiteral;
+use ValueObjects\Web\Url;
 
 trait HasActorIdTrait
 {
@@ -29,5 +31,15 @@ trait HasActorIdTrait
     public function getActorId()
     {
         return $this->actorId;
+    }
+
+    /**
+     * @return array
+     */
+    public function serialize()
+    {
+        return [
+            'actorId' => (string) $this->getActorId(),
+        ];
     }
 }
