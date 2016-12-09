@@ -35,7 +35,7 @@ trait HasAuthoringMetadataTrait
     }
 
     /**
-     * @return \DateTime
+     * @return \DateTimeImmutable
      */
     public function getTime()
     {
