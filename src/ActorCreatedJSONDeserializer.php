@@ -4,7 +4,7 @@ namespace CultuurNet\UDB2DomainEvents;
 
 use CultuurNet\Deserializer\JSONDeserializer;
 use CultuurNet\Deserializer\MissingValueException;
-use ValueObjects\String\String as StringLiteral;
+use ValueObjects\StringLiteral\StringLiteral;
 
 class ActorCreatedJSONDeserializer extends JSONDeserializer
 {

@@ -3,7 +3,7 @@
 namespace CultuurNet\UDB2DomainEvents;
 
 use Broadway\Serializer\SerializableInterface;
-use ValueObjects\String\String as StringLiteral;
+use ValueObjects\StringLiteral\StringLiteral;
 use ValueObjects\Web\Url;
 
 class ActorUpdated extends AbstractActorEvent

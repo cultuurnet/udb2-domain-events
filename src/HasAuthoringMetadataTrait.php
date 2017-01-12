@@ -2,7 +2,7 @@
 
 namespace CultuurNet\UDB2DomainEvents;
 
-use ValueObjects\String\String as StringLiteral;
+use ValueObjects\StringLiteral\StringLiteral;
 
 trait HasAuthoringMetadataTrait
 {
