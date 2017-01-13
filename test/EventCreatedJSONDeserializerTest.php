@@ -108,6 +108,7 @@ class EventCreatedJSONDeserializerTest extends \PHPUnit_Framework_TestCase
 
     public function testReturnsEventCreated()
     {
+        /** @var EventCreated $eventCreated */
         $eventCreated = $this->deserializer->deserialize(
             new StringLiteral(
                 '{
