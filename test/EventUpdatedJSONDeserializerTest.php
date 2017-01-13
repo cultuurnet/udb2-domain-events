@@ -108,6 +108,7 @@ class EventUpdatedJSONDeserializerTest extends \PHPUnit_Framework_TestCase
 
     public function testReturnsEventUpdated()
     {
+        /** @var EventUpdated $eventUpdated */
         $eventUpdated = $this->deserializer->deserialize(
             new StringLiteral(
                 '{
