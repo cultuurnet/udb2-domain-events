@@ -11,8 +11,8 @@
   "minimum-stability": "dev",
   "prefer-stable": true,
   "require": {
-    "cultuurnet/deserializer": "~0.1",
-    "nicolopignatelli/valueobjects": "~2.0",
+    "cultuurnet/deserializer": "dev-feature/III-555 as 0.1",
+    "nicolopignatelli/valueobjects": "~3.0",
     "broadway/broadway": "~0.5.2"
   },
   "require-dev": {
