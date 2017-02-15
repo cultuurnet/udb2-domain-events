@@ -21,10 +21,8 @@ class ActorUpdatedJSONDeserializerTest extends \PHPUnit_Framework_TestCase
 
     public function testRequiresActorId()
     {
-        $this->setExpectedException(
-            MissingValueException::class,
-            'actorId is missing'
-        );
+        $this->expectException(MissingValueException::class);
+        $this->expectExceptionMessage('actorId is missing');
 
         $this->deserializer->deserialize(
             new StringLiteral('{}')
@@ -33,10 +31,8 @@ class ActorUpdatedJSONDeserializerTest extends \PHPUnit_Framework_TestCase
 
     public function testRequiresTime()
     {
-        $this->setExpectedException(
-            MissingValueException::class,
-            'time is missing'
-        );
+        $this->expectException(MissingValueException::class);
+        $this->expectExceptionMessage('time is missing');
 
         $this->deserializer->deserialize(
             new StringLiteral(
@@ -50,10 +46,8 @@ class ActorUpdatedJSONDeserializerTest extends \PHPUnit_Framework_TestCase
 
     public function testTimeNeedsToBeISO8601Formatted()
     {
-        $this->setExpectedException(
-            \RuntimeException::class,
-            'invalid time provided'
-        );
+        $this->expectException(\RuntimeException::class);
+        $this->expectExceptionMessage('invalid time provided');
 
         $this->deserializer->deserialize(
             new StringLiteral(
@@ -69,10 +63,8 @@ class ActorUpdatedJSONDeserializerTest extends \PHPUnit_Framework_TestCase
 
     public function testRequiresAuthor()
     {
-        $this->setExpectedException(
-            MissingValueException::class,
-            'author is missing'
-        );
+        $this->expectException(MissingValueException::class);
+        $this->expectExceptionMessage('author is missing');
 
         $this->deserializer->deserialize(
             new StringLiteral(
@@ -87,10 +79,8 @@ class ActorUpdatedJSONDeserializerTest extends \PHPUnit_Framework_TestCase
 
     public function testRequiresUrl()
     {
-        $this->setExpectedException(
-            MissingValueException::class,
-            'url is missing'
-        );
+        $this->expectException(MissingValueException::class);
+        $this->expectExceptionMessage('url is missing');
 
         $this->deserializer->deserialize(
             new StringLiteral(

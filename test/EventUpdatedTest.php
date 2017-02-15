@@ -12,10 +12,8 @@ class EventUpdatedTest extends \PHPUnit_Framework_TestCase
 {
     public function testEventIdCanNotBeEmptyString()
     {
-        $this->setExpectedException(
-            \InvalidArgumentException::class,
-            'event id can not be empty'
-        );
+        $this->expectException(\InvalidArgumentException::class);
+        $this->expectExceptionMessage('event id can not be empty');
 
         new EventUpdated(
             new StringLiteral(''),
