@@ -4,7 +4,7 @@ namespace CultuurNet\UDB2DomainEvents;
 
 use CultuurNet\Deserializer\MissingValueException;
 use DateTime;
-use ValueObjects\String\String as StringLiteral;
+use ValueObjects\StringLiteral\StringLiteral;
 use ValueObjects\Web\Url;
 
 class ActorUpdatedJSONDeserializerTest extends \PHPUnit_Framework_TestCase
