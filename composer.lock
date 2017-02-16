@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "9d7f81bb0367472d41f18e602dee8187",
+    "content-hash": "477a642dae1d3f53c79527f3ffe9cd5c",
     "packages": [
         {
             "name": "beberlei/assert",
@@ -63,30 +63,31 @@
         },
         {
             "name": "broadway/broadway",
-            "version": "0.5.2",
+            "version": "0.10.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/broadway/broadway.git",
-                "reference": "0fce8c532086ad249a46fec179759c1fa089e35d"
+                "reference": "f9b3916fe0de097db588689b5f458a9cfa3dd9a7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/broadway/broadway/zipball/0fce8c532086ad249a46fec179759c1fa089e35d",
-                "reference": "0fce8c532086ad249a46fec179759c1fa089e35d",
+                "url": "https://api.github.com/repos/broadway/broadway/zipball/f9b3916fe0de097db588689b5f458a9cfa3dd9a7",
+                "reference": "f9b3916fe0de097db588689b5f458a9cfa3dd9a7",
                 "shasum": ""
             },
             "require": {
                 "beberlei/assert": "~2.0",
                 "broadway/uuid-generator": "~0.1.0",
-                "php": ">=5.3.3",
-                "rhumsaa/uuid": "~2.4"
+                "php": ">=5.5.9",
+                "ramsey/uuid": "~2.4"
             },
             "require-dev": {
                 "doctrine/dbal": "~2.4",
                 "doctrine/mongodb": "~1.0",
-                "elasticsearch/elasticsearch": "~1.0",
+                "elasticsearch/elasticsearch": "~1.0|^2.0",
                 "instaclick/base-test-bundle": "~0.5",
                 "monolog/monolog": "~1.8",
+                "phpunit/phpunit": "^4.8",
                 "symfony/console": "~2.4",
                 "symfony/proxy-manager-bridge": "~2.4"
             },
@@ -101,7 +102,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "0.6.x-dev"
+                    "dev-master": "1.0.x-dev"
                 }
             },
             "autoload": {
@@ -146,7 +147,7 @@
                 "domain-driven design",
                 "event sourcing"
             ],
-            "time": "2015-03-31T18:15:05+00:00"
+            "time": "2016-12-07T08:03:00+00:00"
         },
         {
             "name": "broadway/uuid-generator",
