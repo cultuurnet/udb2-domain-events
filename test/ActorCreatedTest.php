@@ -1,21 +1,16 @@
 <?php
-/**
- * @file
- */
 
 namespace CultuurNet\UDB2DomainEvents;
 
-use ValueObjects\String\String as StringLiteral;
+use ValueObjects\StringLiteral\StringLiteral;
 use ValueObjects\Web\Url;
 
 class ActorCreatedTest extends \PHPUnit_Framework_TestCase
 {
     public function testActorIdCanNotBeEmptyString()
     {
-        $this->setExpectedException(
-            \InvalidArgumentException::class,
-            'actor id can not be empty'
-        );
+        $this->expectException(\InvalidArgumentException::class);
+        $this->expectExceptionMessage('actor id can not be empty');
 
         new ActorCreated(
             new StringLiteral(''),

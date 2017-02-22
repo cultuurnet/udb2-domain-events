@@ -1,13 +1,10 @@
 <?php
-/**
- * @file
- */
 
 namespace CultuurNet\UDB2DomainEvents;
 
 use CultuurNet\Deserializer\MissingValueException;
 use DateTime;
-use ValueObjects\String\String as StringLiteral;
+use ValueObjects\StringLiteral\StringLiteral;
 use ValueObjects\Web\Url;
 
 class EventUpdatedJSONDeserializerTest extends \PHPUnit_Framework_TestCase
@@ -24,10 +21,8 @@ class EventUpdatedJSONDeserializerTest extends \PHPUnit_Framework_TestCase
 
     public function testRequiresEventId()
     {
-        $this->setExpectedException(
-            MissingValueException::class,
-            'eventId is missing'
-        );
+        $this->expectException(MissingValueException::class);
+        $this->expectExceptionMessage('eventId is missing');
 
         $this->deserializer->deserialize(
             new StringLiteral('{}')
@@ -36,10 +31,8 @@ class EventUpdatedJSONDeserializerTest extends \PHPUnit_Framework_TestCase
 
     public function testRequiresTime()
     {
-        $this->setExpectedException(
-            MissingValueException::class,
-            'time is missing'
-        );
+        $this->expectException(MissingValueException::class);
+        $this->expectExceptionMessage('time is missing');
 
         $this->deserializer->deserialize(
             new StringLiteral(
@@ -53,10 +46,8 @@ class EventUpdatedJSONDeserializerTest extends \PHPUnit_Framework_TestCase
 
     public function testTimeNeedsToBeISO8601Formatted()
     {
-        $this->setExpectedException(
-            \RuntimeException::class,
-            'invalid time provided'
-        );
+        $this->expectException(\RuntimeException::class);
+        $this->expectExceptionMessage('invalid time provided');
 
         $this->deserializer->deserialize(
             new StringLiteral(
@@ -72,10 +63,8 @@ class EventUpdatedJSONDeserializerTest extends \PHPUnit_Framework_TestCase
 
     public function testRequiresAuthor()
     {
-        $this->setExpectedException(
-            MissingValueException::class,
-            'author is missing'
-        );
+        $this->expectException(MissingValueException::class);
+        $this->expectExceptionMessage('author is missing');
 
         $this->deserializer->deserialize(
             new StringLiteral(
@@ -90,10 +79,8 @@ class EventUpdatedJSONDeserializerTest extends \PHPUnit_Framework_TestCase
 
     public function testRequiresUrl()
     {
-        $this->setExpectedException(
-            MissingValueException::class,
-            'url is missing'
-        );
+        $this->expectException(MissingValueException::class);
+        $this->expectExceptionMessage('url is missing');
 
         $this->deserializer->deserialize(
             new StringLiteral(

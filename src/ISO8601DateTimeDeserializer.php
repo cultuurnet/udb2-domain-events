@@ -4,12 +4,12 @@ namespace CultuurNet\UDB2DomainEvents;
 
 use DateTime;
 use DateTimeImmutable;
-use ValueObjects\String\String as StringLiteral;
+use ValueObjects\StringLiteral\StringLiteral;
 
 class ISO8601DateTimeDeserializer
 {
     /**
-     * @param String $timeString
+     * @param StringLiteral $timeString
      *
      * @return \DateTimeImmutable
      */

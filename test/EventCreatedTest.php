@@ -1,21 +1,16 @@
 <?php
-/**
- * @file
- */
 
 namespace CultuurNet\UDB2DomainEvents;
 
-use ValueObjects\String\String as StringLiteral;
+use ValueObjects\StringLiteral\StringLiteral;
 use ValueObjects\Web\Url;
 
 class EventCreatedTest extends \PHPUnit_Framework_TestCase
 {
     public function testEventIdCanNotBeEmptyString()
     {
-        $this->setExpectedException(
-            \InvalidArgumentException::class,
-            'event id can not be empty'
-        );
+        $this->expectException(\InvalidArgumentException::class);
+        $this->expectExceptionMessage('event id can not be empty');
 
         new EventCreated(
             new StringLiteral(''),
