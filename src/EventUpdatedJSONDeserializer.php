@@ -2,6 +2,10 @@
 
 namespace CultuurNet\UDB2DomainEvents;
 
+use CultuurNet\Deserializer\JSONDeserializer;
+use CultuurNet\Deserializer\MissingValueException;
+use ValueObjects\StringLiteral\StringLiteral;
+
 class EventUpdatedJSONDeserializer extends JSONDeserializer
 {
     public function deserialize(StringLiteral $json)
