@@ -1,7 +1,4 @@
 <?php
-/**
- * @file
- */
 
 namespace CultuurNet\UDB2DomainEvents;
 
@@ -12,10 +9,8 @@ class ActorUpdatedTest extends \PHPUnit_Framework_TestCase
 {
     public function testActorIdCanNotBeEmptyString()
     {
-        $this->setExpectedException(
-            \InvalidArgumentException::class,
-            'actor id can not be empty'
-        );
+        $this->expectException(\InvalidArgumentException::class);
+        $this->expectExceptionMessage('actor id can not be empty');
 
         new ActorUpdated(
             new StringLiteral(''),

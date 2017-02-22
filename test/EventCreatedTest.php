@@ -1,7 +1,4 @@
 <?php
-/**
- * @file
- */
 
 namespace CultuurNet\UDB2DomainEvents;
 
@@ -12,10 +9,8 @@ class EventCreatedTest extends \PHPUnit_Framework_TestCase
 {
     public function testEventIdCanNotBeEmptyString()
     {
-        $this->setExpectedException(
-            \InvalidArgumentException::class,
-            'event id can not be empty'
-        );
+        $this->expectException(\InvalidArgumentException::class);
+        $this->expectExceptionMessage('event id can not be empty');
 
         new EventCreated(
             new StringLiteral(''),

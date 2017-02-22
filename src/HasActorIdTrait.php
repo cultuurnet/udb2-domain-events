@@ -2,13 +2,10 @@
 
 namespace CultuurNet\UDB2DomainEvents;
 
-use DateTime;
 use ValueObjects\StringLiteral\StringLiteral;
-use ValueObjects\Web\Url;
 
 trait HasActorIdTrait
 {
-
     /**
      * @var StringLiteral
      */
