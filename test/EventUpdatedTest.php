@@ -1,14 +1,12 @@
 <?php
-/**
- * @file
- */
 
 namespace CultuurNet\UDB2DomainEvents;
 
+use PHPUnit\Framework\TestCase;
 use ValueObjects\StringLiteral\StringLiteral;
 use ValueObjects\Web\Url;
 
-class EventUpdatedTest extends \PHPUnit_Framework_TestCase
+class EventUpdatedTest extends TestCase
 {
     public function testEventIdCanNotBeEmptyString()
     {

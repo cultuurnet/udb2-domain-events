@@ -2,10 +2,11 @@
 
 namespace CultuurNet\UDB2DomainEvents;
 
+use PHPUnit\Framework\TestCase;
 use ValueObjects\StringLiteral\StringLiteral;
 use ValueObjects\Web\Url;
 
-class ActorCreatedTest extends \PHPUnit_Framework_TestCase
+class ActorCreatedTest extends TestCase
 {
     public function testActorIdCanNotBeEmptyString()
     {
