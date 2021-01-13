@@ -4,10 +4,11 @@ namespace CultuurNet\UDB2DomainEvents;
 
 use CultuurNet\Deserializer\MissingValueException;
 use DateTime;
+use PHPUnit\Framework\TestCase;
 use ValueObjects\StringLiteral\StringLiteral;
 use ValueObjects\Web\Url;
 
-class ActorUpdatedJSONDeserializerTest extends \PHPUnit_Framework_TestCase
+class ActorUpdatedJSONDeserializerTest extends TestCase
 {
     /**
      * @var ActorUpdatedJSONDeserializer
