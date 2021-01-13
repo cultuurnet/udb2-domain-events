@@ -11,6 +11,7 @@
   "minimum-stability": "dev",
   "prefer-stable": true,
   "require": {
+    "php": ">=7.1",
     "cultuurnet/deserializer": "~0.1",
     "cultuurnet/valueobjects": "~3.0",
     "broadway/broadway": "~0.10"
